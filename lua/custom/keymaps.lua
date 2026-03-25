@@ -1,0 +1,5 @@
+-- Move lines up/down (VS Code style: Option+Up/Down)
+vim.keymap.set('n', '<M-k>', '<cmd>move .-2<CR>==', { desc = 'Move line up' })
+vim.keymap.set('n', '<M-j>', '<cmd>move .+1<CR>==', { desc = 'Move line down' })
+vim.keymap.set('v', '<M-k>', ":move '<-2<CR>gv=gv", { desc = 'Move selection up' })
+vim.keymap.set('v', '<M-j>', ":move '>+1<CR>gv=gv", { desc = 'Move selection down' })
