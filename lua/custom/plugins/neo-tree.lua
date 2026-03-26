@@ -12,6 +12,9 @@ return {
       { '<leader>tt', '<cmd>Neotree toggle<CR>', desc = '[T]oggle [T]ree' },
     },
     opts = {
+      filesystem = {
+        follow_current_file = { enabled = true },
+      },
       window = {
         mappings = {
           ['l'] = 'open',
