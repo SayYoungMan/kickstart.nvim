@@ -615,6 +615,7 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
+        terraformls = {},
 
         stylua = {}, -- Used to format Lua code
 
@@ -660,6 +661,7 @@ require('lazy').setup({
         -- You can add other tools here that you want Mason to install
         'prettier',
         'eslint_d',
+        'terraform-ls',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -712,6 +714,8 @@ require('lazy').setup({
         javascriptreact = { 'eslint_d', 'prettier', stop_after_first = false },
         typescript = { 'eslint_d', 'prettier', stop_after_first = false },
         typescriptreact = { 'eslint_d', 'prettier', stop_after_first = false },
+        terraform = { 'terraform_fmt' },
+        ['terraform-vars'] = { 'terraform_fmt' },
       },
     },
   },
