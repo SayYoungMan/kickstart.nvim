@@ -606,7 +606,7 @@ require('lazy').setup({
       ---@type table<string, vim.lsp.Config>
       local servers = {
         clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         --
@@ -662,6 +662,8 @@ require('lazy').setup({
         'prettier',
         'eslint_d',
         'terraform-ls',
+        'gofumpt',
+        'goimports',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -716,6 +718,7 @@ require('lazy').setup({
         typescriptreact = { 'eslint_d', 'prettier', stop_after_first = false },
         terraform = { 'terraform_fmt' },
         ['terraform-vars'] = { 'terraform_fmt' },
+        go = { 'goimports', 'gofumpt' },
       },
     },
   },
