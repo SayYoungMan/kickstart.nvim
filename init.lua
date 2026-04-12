@@ -892,6 +892,9 @@ require('lazy').setup({
     lazy = false,
     build = ':TSUpdate',
     branch = 'main',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
       local parsers =
@@ -918,6 +921,23 @@ require('lazy').setup({
           vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end,
       })
+
+      require('nvim-treesitter-textobjects').setup {
+        select = { lookahead = true },
+      }
+
+      local ts_select = require('nvim-treesitter-textobjects.select')
+      local textobjects = {
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
+      }
+      for key, query in pairs(textobjects) do
+        vim.keymap.set({ 'o', 'x' }, key, function()
+          ts_select.select_textobject(query)
+        end)
+      end
     end,
   },
 
