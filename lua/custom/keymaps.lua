@@ -23,3 +23,7 @@ vim.keymap.set('v', '<M-j>', ":move '>+1<CR>gv=gv", { desc = 'Move selection dow
 -- Ctrl+d, Ctrl+u moves half page up/down but always centres screen
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move half screen down' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move half screen up' })
+
+-- Open Undo Tree
+vim.cmd 'packadd nvim.undotree'
+vim.keymap.set('n', '<leader>ou', require('undotree').open, { desc = '[O]pen [U]ndotree' })
