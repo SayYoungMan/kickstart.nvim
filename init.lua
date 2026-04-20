@@ -897,8 +897,26 @@ require('lazy').setup({
     },
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
-      local parsers =
-        { 'bash', 'c', 'diff', 'go', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'typescript', 'tsx', 'javascript' }
+      local parsers = {
+        'bash',
+        'c',
+        'diff',
+        'go',
+        'html',
+        'latex',
+        'typst',
+        'yaml',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'typescript',
+        'tsx',
+        'javascript',
+      }
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
@@ -926,7 +944,7 @@ require('lazy').setup({
         select = { lookahead = true },
       }
 
-      local ts_select = require('nvim-treesitter-textobjects.select')
+      local ts_select = require 'nvim-treesitter-textobjects.select'
       local textobjects = {
         ['af'] = '@function.outer',
         ['if'] = '@function.inner',
@@ -934,9 +952,7 @@ require('lazy').setup({
         ['ic'] = '@class.inner',
       }
       for key, query in pairs(textobjects) do
-        vim.keymap.set({ 'o', 'x' }, key, function()
-          ts_select.select_textobject(query)
-        end)
+        vim.keymap.set({ 'o', 'x' }, key, function() ts_select.select_textobject(query) end)
       end
     end,
   },

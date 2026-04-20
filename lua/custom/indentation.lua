@@ -1,4 +1,4 @@
-local two_space_fts = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json' }
+local two_space_fts = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json', 'yaml' }
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = two_space_fts,
