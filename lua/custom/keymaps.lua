@@ -14,6 +14,9 @@ vim.keymap.set('n', '<leader>ce', function()
   vim.notify('Copied: ' .. result, vim.log.levels.INFO)
 end, { desc = '[C]opy [E]rror message' })
 
+-- Copy all lines of current file
+vim.keymap.set('n', '<leader>ca', 'ggyG', { desc = '[C]opy [A]ll' })
+
 -- Move lines up/down (VS Code style: Option+Up/Down)
 vim.keymap.set('n', '<M-k>', '<cmd>move .-2<CR>==', { desc = 'Move line up' })
 vim.keymap.set('n', '<M-j>', '<cmd>move .+1<CR>==', { desc = 'Move line down' })
