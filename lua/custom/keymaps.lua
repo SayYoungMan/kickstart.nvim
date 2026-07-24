@@ -30,3 +30,21 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move half screen up' })
 -- Open Undo Tree
 vim.cmd 'packadd nvim.undotree'
 vim.keymap.set('n', '<leader>ou', require('undotree').open, { desc = '[O]pen [U]ndotree' })
+
+-- Toggle comment on g/ instead of the built-in gc
+vim.keymap.set({ 'n', 'x' }, 'g/', function()
+  return require('vim._comment').operator()
+end, { expr = true, desc = 'Toggle comment' })
+vim.keymap.del({ 'n', 'x' }, 'gc')
+
+-- g// toggles the current line (replaces gcc)
+vim.keymap.set('n', 'g//', function()
+  return require('vim._comment').operator() .. '_'
+end, { expr = true, desc = 'Toggle comment line' })
+vim.keymap.del('n', 'gcc')
+
+-- Comment textobject, e.g. dg/ deletes a comment block, g/g/ toggles one
+vim.keymap.set('o', 'g/', function()
+  require('vim._comment').textobject()
+end, { desc = 'Comment textobject' })
+vim.keymap.del('o', 'gc')
